@@ -23,26 +23,3 @@ char *_input_len(void)
     else
     return (len);
 }
-/**
- * _spliter - split len 
- * 
- * Description: Spliting the command,
- * Return: token (success), or status of the non_interactive_mode
- */
-/*char *spliter(char *len)
-{
-    char *token;
-    int i = 0;
-    char **strs;
-    strs = malloc(sizeof(char *) * i);
-    token = strtok(len, " \n\t");
-    while(token)
-    {
-        strs[i] = token;
-        token = strtok(NULL, "\n\t");
-        i++;
-    }
-    strs[i] = NULL;
-    return (token);
-    free(strs);
-}*/
