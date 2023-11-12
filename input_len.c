@@ -15,7 +15,7 @@ char *_input_len(void)
     car = getline(&len, &len_size, stdin);
     if (car == EOF)
     {
-        free(len);
+        free (len);
         write(1, "\n", 1);
         perror("getline");
         exit(EXIT_FAILURE);

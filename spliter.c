@@ -15,6 +15,8 @@ char **_spliter(char *len)
         return (NULL);
 
     num = number_args(len);
+    if (num <= 0)
+        return NULL;
     array = malloc(sizeof(char *) * (num + 1));
     if (array == NULL)
         return (NULL);
@@ -22,9 +24,9 @@ char **_spliter(char *len)
     token = strtok(len, NONE);
     while (token)
     {
-        array[i] = token;
-        token = strtok(NULL, NONE);
+        array[i] = strdup(token);
         i++;
+        token = strtok(NULL, NONE);
     }
     free(len), len = NULL;
     array[i] = NULL;

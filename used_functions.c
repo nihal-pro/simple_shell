@@ -2,17 +2,16 @@
 
 void special_free(char **array)
 {
-    int j = 0;
+   int j = 0;
 
     if (array != NULL)
-        return;
-
-    for(j = 0; array[j]; j++)
     {
-        free(array[j]), array[j] = NULL;
-        j++;
+        for (j = 0; array[j]; j++)
+        {
+            free(array[j]), array[j] = NULL;
+        }
+        free(array), array = NULL;
     }
-    free(array), array = NULL;
 }
 int number_args(char *len)
 {
@@ -29,6 +28,6 @@ int number_args(char *len)
         j++;
         token = strtok(NULL, NONE);
     }
-    free (dep), dep = NULL;
+    free(dep), dep = NULL;
     return (j);
 }
