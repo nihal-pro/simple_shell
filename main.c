@@ -26,7 +26,6 @@ int main (int ac, char **av)
                 special_free(tokens);
             }
         }
-        special_free(tokens);
     }
 
 

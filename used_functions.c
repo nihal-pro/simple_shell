@@ -7,10 +7,22 @@ void special_free(char **array)
     if (array != NULL)
         return;
 
-    while (array[j] != NULL)
+    for(j = 0; array[j]; j++)
     {
-        free(array[j]);
+        free(array[j]), array[j] = NULL;
         j++;
     }
-    free(array);
+    free(array), array = NULL;
+}
+int number_args(char *len)
+{
+    char *token;
+    int j = 0;
+    while (token)
+    {
+        token = strtok(len, NONE);
+        j++;
+        token = strtok(NULL, NONE);
+    }
+    return (j);
 }

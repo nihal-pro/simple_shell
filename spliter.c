@@ -8,13 +8,13 @@
 char **_spliter(char *len)
 {
     char *token;
-    int i = 0;
+    int i = 0, num = 0;
     char **array;
 
     if (len == NULL)
         return (NULL);
-
-    array = malloc(sizeof(char *) * i);
+    num = number_args(len);
+    array = malloc(sizeof(char *) * (num + 1));
     if (array == NULL)
         return (NULL);
 
