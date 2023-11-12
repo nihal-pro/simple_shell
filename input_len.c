@@ -20,6 +20,5 @@ char *_input_len(void)
         perror("getline");
         exit(EXIT_FAILURE);
     }
-    else
     return (len);
 }
