@@ -23,4 +23,5 @@ char **_spliter(char *len);
 char *_strdup(const char *ssd);
 void special_free(char **array);
 int number_args(char *len);
+char **_execute(char **token);
 #endif

@@ -24,7 +24,7 @@ char **_spliter(char *len)
     token = strtok(len, NONE);
     while (token)
     {
-        array[i] = strdup(token);
+        array[i] = _strdup(token);
         i++;
         token = strtok(NULL, NONE);
     }
