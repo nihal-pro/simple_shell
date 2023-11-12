@@ -13,6 +13,7 @@ char **_spliter(char *len)
 
     if (len == NULL)
         return (NULL);
+
     num = number_args(len);
     array = malloc(sizeof(char *) * (num + 1));
     if (array == NULL)
@@ -21,7 +22,7 @@ char **_spliter(char *len)
     token = strtok(len, NONE);
     while (token)
     {
-        array[i] = strdup(token);
+        array[i] = token;
         token = strtok(NULL, NONE);
         i++;
     }

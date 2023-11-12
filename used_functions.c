@@ -16,13 +16,19 @@ void special_free(char **array)
 }
 int number_args(char *len)
 {
-    char *token;
+    char *token = NULL, *dep = NULL;
     int j = 0;
+
+    dep = _strdup(len);
+    if (dep == NULL)
+        return (-1);
+
+    token = strtok(dep, NONE);
     while (token)
     {
-        token = strtok(len, NONE);
         j++;
         token = strtok(NULL, NONE);
     }
+    free (dep), dep = NULL;
     return (j);
 }
