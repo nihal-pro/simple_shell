@@ -12,29 +12,26 @@ int main (int ac, char **av)
     /*int cmnd;*/
     (void)ac;
     (void)av;
-
-    while (1)
+            
+ while (1)
     {
         len = _input_len();
 
         tokens = _spliter(len);
         if (tokens != NULL)
         {
-            continue;
             for (int i = 0; tokens[i]; i++)
-            {   
-                printf ("%s\n", tokens[i]);
-                free (tokens[i]), tokens[i] = NULL;
+            {
+                printf("%s\n", tokens[i]);
+                special_free(tokens);
             }
-            free(tokens), tokens = NULL;
         }
-            
-
-
+        special_free(tokens);
+    }
 
 
         /*cmnd = _execute(token);*/
         /*free(len);*/
-    }
+    
     return (0);
 }

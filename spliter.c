@@ -7,28 +7,28 @@
  */
 char **_spliter(char *len)
 {
-    char *token = NULL;
+    char *token;
     int i = 0;
-    char **array = NULL;
+    char **array;
 
     if (len == NULL)
-        return NULL;
+        return (NULL);
+
+    array = malloc(sizeof(char *) * i);
+    if (array == NULL)
+        return (NULL);
+
     token = strtok(len, NONE);
-    array = malloc(sizeof(char *) * 1024);
-    while(token)
+    while (token)
     {
-        if (array == NULL)
-        {
-            len = NULL;
-            free(len);
-            return NULL;
-        }
-        array[i] = token;
+        array[i] = strdup(token);
         token = strtok(NULL, NONE);
         i++;
     }
-    free (len), len = NULL; 
-    return (array);
+    free(len), len = NULL;
     array[i] = NULL;
-    free(array);
+    return (array);
 }
+
+
+ 

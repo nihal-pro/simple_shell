@@ -20,5 +20,6 @@
 /* --- Functions used in task_01 --- */
 char *_input_len(void);
 char **_spliter(char *len);
-
+char *_strdup(const char *ssd);
+void special_free(char **array);
 #endif
