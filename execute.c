@@ -9,6 +9,7 @@ int _execute(char **token, char **argv)
     if(pid == EOF)
     {
         perror("fork");
+        special_free(token);
         exit(EXIT_FAILURE);
     }
     if(pid == 0)
@@ -16,11 +17,14 @@ int _execute(char **token, char **argv)
         if(execve(token[0], token, environ) == -1)
         {
             perror(argv[0]); /*perror("execve") -> execve : no such file or directory perror("argv[0]") -> ./file : no..*/
-            exit(EXIT_FAILURE);
             special_free(token);
+            exit(EXIT_FAILURE);
         }
     }
     waitpid(pid, &status, 0);
+
+
+
     special_free(token);
 
 
