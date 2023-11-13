@@ -24,5 +24,5 @@ int _execute(char **token, char **argv)
     special_free(token);
 
 
-    return (WEXITSTATUS(status));   
+    return (WEXITSTATUS(status));  /*handle exit status*/
 }
