@@ -8,16 +8,16 @@
 char **_spliter(char *len)
 {
     char *token;
-    int i = 0, num = 0;
+    int i = 0, argc = 0;
     char **array;
 
     if (len == NULL)
         return (NULL);
 
-    num = number_args(len);
-    if (num <= 0)
+    argc = number_args(len);
+    if (argc <= 0)
         return NULL;
-    array = malloc(sizeof(char *) * (num + 1));
+    array = malloc(sizeof(char *) * (argc + 1));
     if (array == NULL)
         return (NULL);
 

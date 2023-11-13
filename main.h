@@ -2,7 +2,7 @@
 #define MAIN_H
 
 #define NONE " \n\t"
-
+extern char **environ;
 /* --- headers file --- */
 #include <stdio.h>	   /* stdin using in getline */
 #include <unistd.h>	   /* for write and execve function */
@@ -23,5 +23,5 @@ char **_spliter(char *len);
 char *_strdup(const char *ssd);
 void special_free(char **array);
 int number_args(char *len);
-char **_execute(char **token);
+int _execute(char **token, char **argv);
 #endif

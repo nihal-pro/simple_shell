@@ -9,26 +9,25 @@ int main (int ac, char **av)
 {
    char *len = NULL;
     char **tokens;
-    /*int cmnd;*/
     (void)ac;
-    (void)av;
+    int status;
 
     while (1)
     {
         len = _input_len();
+        /*free(len);*/
         tokens = _spliter(len);
-        if (tokens != NULL)
+        status = _execute(tokens, av);
+        /*if (tokens != NULL)
         {
             for (int i = 0; tokens[i] != NULL; i++)
             {
                 printf("%s\n", tokens[i]);
             }
         }
-        special_free(tokens);
+        special_free(tokens);*/
     }
+    return (0);
 
     /*cmnd = _execute(token);*/
-    /*free(len);*/
-
-    return (0);
 }
