@@ -10,7 +10,7 @@ char *_input_len(void)
     char *len = NULL;
     size_t len_size = 0;
     ssize_t car;
-    if (isatty(STDIN_FILENO) == 1)
+    if (isatty(STDIN_FILENO) == 1)/*check non interactive mode*/
         write(1, "$ ", 2);
     car = getline(&len, &len_size, stdin);
     if (car == EOF)

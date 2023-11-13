@@ -10,14 +10,13 @@ int main (int ac, char **av)
    char *len = NULL;
     char **tokens;
     (void)ac;
-    int status;
 
     while (1)
     {
         len = _input_len();
         /*free(len);*/
         tokens = _spliter(len);
-        status = _execute(tokens, av);
+        _execute(tokens, av);
         /*if (tokens != NULL)
         {
             for (int i = 0; tokens[i] != NULL; i++)
