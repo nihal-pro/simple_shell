@@ -16,8 +16,8 @@ char *_input_len(void)
     if (car == EOF)
     {
         /*write(1, "\n", 1);*/
-        perror("getline");
-        exit(EXIT_FAILURE);
+        perror("ERROR:");
+        exit(EXIT_SUCCESS);
     }
     return (len);
 }

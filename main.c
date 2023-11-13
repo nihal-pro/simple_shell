@@ -9,6 +9,7 @@ int main (int ac, char **av)
 {
    char *len = NULL;
     char **tokens;
+    int status = 0;
     (void)ac;
 
     while (1)
@@ -16,7 +17,7 @@ int main (int ac, char **av)
         len = _input_len();
         /*free(len);*/
         tokens = _spliter(len);
-        _execute(tokens, av);
+        status = _execute(tokens, av);
         /*if (tokens != NULL)
         {
             for (int i = 0; tokens[i] != NULL; i++)
@@ -26,7 +27,8 @@ int main (int ac, char **av)
         }
         special_free(tokens);*/
     }
-    return (0);
-
+    return (status);
+    free (tokens), tokens = NULL;
+    free (len), len = NULL;
     /*cmnd = _execute(token);*/
 }
