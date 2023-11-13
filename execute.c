@@ -10,7 +10,7 @@ int _execute(char **token, char **argv)
     {
         perror("fork");
         special_free(token);
-        exit(EXIT_FAILURE);
+        exit(127);
     }
     if(pid == 0)
     {
@@ -18,14 +18,14 @@ int _execute(char **token, char **argv)
         {
             perror(argv[0]); /*perror("execve") -> execve : no such file or directory perror("argv[0]") -> ./file : no..*/
             special_free(token);
-            exit(EXIT_FAILURE);
+            exit(127);
         }
     }
-    waitpid(pid, &status, 0);
-
-
-
-    special_free(token);
+    else
+    {
+        waitpid(pid, &status, 0);
+        special_free(token);
+    }
 
 
     return (WEXITSTATUS(status));  /*handle exit status*/
