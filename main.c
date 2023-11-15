@@ -5,30 +5,56 @@
  * @av : arguments 
  * Return: 0 (success), or status of the non_interactive_mode
  */
-int main (int ac, char **av)
+/*int main (int ac, char **av)
 {
    char *len = NULL;
     char **tokens;
-    int status = 0;
+    int status, idx = 0;
     (void)ac;
 
     while (1)
     {
         len = _input_len();
-        /*free(len);*/
+        if (len == NULL)
+            return (status);
+        free(len);
+        idx++;
         tokens = _spliter(len);
-        status = _execute(tokens, av);
-        /*if (tokens != NULL)
+
+
+        status = _execute(tokens, av, idx);
+        if (tokens != NULL)
         {
             for (int i = 0; tokens[i] != NULL; i++)
             {
                 printf("%s\n", tokens[i]);
             }
         }
-        special_free(tokens);*/
+        special_free(tokens);
     }
-    return (status);
-    free (tokens), tokens = NULL;
-    free (len), len = NULL;
-    /*cmnd = _execute(token);*/
+    cmnd = _execute(token);
+
+}*/
+
+int main (int ac, char **av)
+{
+    char *len = NULL;
+    char **tokens;
+    /*int status = 0, idx = 0;*/
+    int status;
+    (void)ac;
+
+    while (1)
+    {
+        len = _input_len();
+        if (len == NULL)
+        {
+            if (isatty(STDIN_FILENO) == 1)
+                write(1, "\n", 1);
+            return (status);
+        }
+
+        tokens = _spliter(len);
+        status = _execute(tokens, av);
+    }
 }

@@ -15,9 +15,14 @@ char *_input_len(void)
     car = getline(&len, &len_size, stdin);
     if (car == EOF)
     {
-        /*write(1, "\n", 1);*/
+        free (len);
+        return (NULL);
+
+        if (isatty(STDIN_FILENO) == 1)
+            write(1, "\n", 1);
         perror("ERROR:");
-        exit(EXIT_SUCCESS);
+            
+        exit(EXIT_FAILURE);
     }
     return (len);
 }

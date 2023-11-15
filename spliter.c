@@ -1,5 +1,5 @@
-#include "main.h"
-/**
+ #include "main.h"
+ /**
  * _spliter - split len 
  * 
  * Description: Spliting the command,
@@ -7,9 +7,9 @@
  */
 char **_spliter(char *len)
 {
-    char *token;
+    char *token = NULL;
     int i = 0, argc = 0;
-    char **array;
+    char **array = NULL;
 
     if (len == NULL)
         return (NULL);
@@ -18,9 +18,11 @@ char **_spliter(char *len)
     if (argc <= 0)
         return NULL;
     array = malloc(sizeof(char *) * (argc + 1));
-    if (array == NULL)
+    if (!array)
+    {
+        free(len);
         return (NULL);
-
+    }
     token = strtok(len, NONE);
     while (token)
     {
@@ -33,5 +35,3 @@ char **_spliter(char *len)
     return (array);
 }
 
-
- 
