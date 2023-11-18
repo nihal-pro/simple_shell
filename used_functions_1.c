@@ -58,17 +58,17 @@ int positif_number(char *str)
 {
 	int i;
 
-	if(!str)
+	if (!str)
 		return (0);
-	for(i = 0; str[i]; i++)
+	for (i = 0; str[i]; i++)
 	{
-		if(str[i] < '0' || str[i] > '9')
+		if (str[i] < '0' || str[i] > '9')
 			return (0);
 	}
 	return (1);
 }
 /**
- * __itoa - Convert to integer.
+ * _itoa - Convert to integer.
  * @str: The input string.
  *
  * Description: This function takes a string to convert it to integer
@@ -78,10 +78,10 @@ int _itoa(char *str)
 {
 	int i, num = 0;
 
-	for(i = 0; str[0]; i++)
+	for (i = 0; str[0]; i++)
 	{
 		num *= 10;
 		num += (str[i] - '0');
 	}
-	return (num);	
+	return (num);
 }

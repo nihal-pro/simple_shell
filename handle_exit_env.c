@@ -37,16 +37,18 @@ void handle_builtin(char **my_command, char **av, int *status)
  * shell_exit - Exits the shell with the specified exit status.
  * @my_command : A string representing the command to be checked.
  * @status : Pointer to the exit status of the shell.
+ * @argv: argummant
+ * @idx: index
  * Return: Void
  */
-void shell_exit(char **my_command,char **argv, int *status, int idx)
+void shell_exit(char **my_command, char **argv, int *status, int idx)
 {
-	int exit_value = (*status);
+	int exit_value = *status;
 	char *index, messag[] = ": exit: Illegal number: ";
 
-	if(my_command[1])
+	if (my_command[1])
 	{
-		if(positif_number(my_command[1]))
+		if (positif_number(my_command[1]))
 			exit_value = _atoi(my_command[1]);
 		else
 		{
@@ -61,7 +63,7 @@ void shell_exit(char **my_command,char **argv, int *status, int idx)
 			free(index);
 			special_free(my_command);
 			return;
-		}	
+		}
 	}
 	special_free(my_command);
 	exit(exit_value);
@@ -84,4 +86,3 @@ void _env(char **my_command, int *status)
 	special_free(my_command);
 	(*status) = 0;
 }
-
