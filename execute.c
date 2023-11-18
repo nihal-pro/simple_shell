@@ -1,79 +1,39 @@
 #include "main.h"
-
-/*int _execute(char **token, char **argv, int inx)
-{
-    int status = 0;
-    pid_t pid;
-    char *my_command;
-
-    my_command = _getpath(token[0]);
-    if (my_command)
-    {
-        handle_error(argv[0], token[0], inx);
-        special_free(token);
-        return (127);
-    }
-
-    pid = fork();
-    if(pid == EOF)
-    {
-        perror("fork");
-        exit(EXIT_FAILURE);
-    }
-    if(pid == 0)
-    {
-        if(execve(my_command, token, environ) == -1)
-        {
-            perror(argv[0]);
-            free (my_command); my_command = NULL;
-            special_free(token);
-            exit(EXIT_FAILURE);
-        }
-    }
-    else
-    {
-        waitpid(pid, &status, 0);
-        special_free(token);
-        free (my_command); my_command = NULL; 
-    }
-
-
-    return (WEXITSTATUS(status));  handle exit status
-}*/
-
+/**
+ * _execute - Executes a command specified
+ * by the token array in a child process.
+ * @token : array of strings representing
+ * the command and its arguments.
+ * @argv : array of strings representing
+ * the command-line arguments.
+ * Return: Returns the exit status of the child process
+ */
 int _execute(char **token, char **argv)
 {
-    int status = 0;
-    pid_t pid;
-    /*char *my_command;*/
+	int status = 0;
+	pid_t pid;
 
-   /* my_command = _getpath(token[0]);
-    if (my_command)
-    {
-        handle_error(argv[0], token[0], inx);
-        special_free(token);
-        return (127);
-    }*/
-
-    pid = fork();
-    if(pid == 0)
-    {
-        if(execve(token[0], token, environ) == -1)
-        {
-            perror(argv[0]);
-            /*free (my_command); my_command = NULL;*/
-            special_free(token);
-            exit(EXIT_FAILURE);
-        }
-    }
-    else
-    {
-        waitpid(pid, &status, 0);
-        special_free(token);
-        /*free (my_command); my_command = NULL;*/ 
-    }
-
-
-    return (WEXITSTATUS(status));  /*handle exit status*/
+	if (token == NULL || token[0] == NULL)
+	{
+		/*Handle the case where token is NULL or empty*/
+		free(token);
+		/*Or any other appropriate error code*/
+		return (-1);
+	}
+	pid = fork();
+	if (pid == 0)
+	{
+		if (execve(token[0], token, environ) == -1)
+		{
+			perror(argv[0]);
+			special_free(token);
+		}
+	}
+	else
+	{
+		waitpid(pid, &status, 0);
+		special_free(token);
+	}
+	return (WEXITSTATUS(status));/*handle exit status*/
 }
 
